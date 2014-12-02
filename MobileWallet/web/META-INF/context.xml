@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/"/>
+<Context antiJARLocking="true" path="/">
+    <Resource accessToUnderlyingConnectionAllowed="true" auth="Container" driverClassName="oracle.jdbc.OracleDriver" logAbandoned="true" maxActive="100" maxIdle="30" maxWait="8000" name="jdbc/ds" password="mobilewallet" removeAbandoned="true" removeAbandonedTimeout="210" testOnBorrow="true" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:mobilewallet" username="mobilewallet" validationQuery="SELECT 1 from dual"/>
+    <Resource auth="Container" name="mail/Session" type="javax.mail.Session"/>
+    <ResourceParams name="mail/Session">
+        <parameter>
+            <name>mail.smtp.host</name>
+            <value>localhost</value>
+        </parameter>
+    </ResourceParams>
+</Context>
