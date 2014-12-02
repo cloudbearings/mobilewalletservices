@@ -30,8 +30,9 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(com.mobilewallet.services.BalanceResource.class);
+        resources.add(com.mobilewallet.services.BalanceService.class);
         resources.add(com.mobilewallet.services.FeedbackService.class);
         resources.add(com.mobilewallet.services.LoginService.class);
+        resources.add(com.mobilewallet.services.UserProfileService.class);
     } 
 }
