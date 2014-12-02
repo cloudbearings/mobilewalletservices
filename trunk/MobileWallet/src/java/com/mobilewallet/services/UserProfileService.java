@@ -6,11 +6,8 @@
 package com.mobilewallet.services;
 
 import com.mobilewallet.common.beans.LoginBean;
-import com.mobilewallet.common.bo.LoginBO;
 import com.mobilewallet.config.Config;
-import com.mobilewallet.users.bo.BalanceBO;
-import com.mobilewallet.users.dto.Balance;
-import com.mobilewallet.users.dto.User;
+import com.mobilewallet.users.bo.UserBO;
 import com.mobilewallet.util.MobileWalletID;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -24,14 +21,14 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author Gopi
  */
-@Path("balance")
-public class BalanceResource {
+@Path("profile")
+public class UserProfileService {
 
-    private final Log log = LogFactory.getLog(BalanceResource.class);
+    private final Log log = LogFactory.getLog(UserProfileService.class);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Object balance(@QueryParam("id") String eid) {
+    public Object profile(@QueryParam("id") String eid) {
 
         String decryptedUserId = MobileWalletID.getDecryptedUserId(eid);
         String userId = null;
@@ -43,17 +40,10 @@ public class BalanceResource {
 
             }
         }
-
+        log.info("UserId : " + userId);
         if (userId != null) {
 
-            User user = LoginBO.login(userId);
-
-            if (user != null) {
-                Balance w = BalanceBO.balanceInfo(user.getUserId());
-                if (w != null) {
-                    return w;
-                }
-            }
+            return UserBO.userProfile(Long.parseLong(userId));
         }
 
         return new LoginBean();
