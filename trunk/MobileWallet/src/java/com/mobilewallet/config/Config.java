@@ -12,5 +12,7 @@ package com.mobilewallet.config;
 public class Config {
 
     public static final String GCM_SERVER_ID = "AIzaSyBLAOakCF-8CvQFZ8nQjyxxs5yF0aS-BNw";
-    public static final String USER_ENCRYPTED_EXTENSION = "Wallet_Plusss.*#@!Config";
+    public static final String USER_ENCRYPTED_EXTENSION = "mObiLE_WAlleT.*#@!Config";
+    public static final String PWD_SALT = "wALLEtPLuS#_App**&S@a@L@T%%%%";
+    public static final String RESET_PWD_KEY = "Re$ET#MoBileW@LlETPwD";
 }

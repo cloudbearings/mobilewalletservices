@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 /**
  *
- * @author gopi
+ * @author Gopi
  */
 @Path("login")
 public class LoginService {
@@ -33,7 +33,7 @@ public class LoginService {
 
         if (email != null && password != null) {
 
-            String salt = "wALLEtPLuS#_App**&S@a@L@T%%%%" + password;
+            String salt = Config.PWD_SALT + password;
             String md5PWD = org.apache.commons.codec.digest.DigestUtils.md5Hex(password + salt);
             User user = LoginBO.login(email.toLowerCase(), md5PWD);
             log.info(" Email : " + email + ", PWD : " + password);
@@ -42,7 +42,7 @@ public class LoginService {
                 String userEID = MobileWalletID.getEncryptedUserId(Config.USER_ENCRYPTED_EXTENSION + user.getUserId());
                 JSONObject obj = new JSONObject();
                 try {
-                    obj.put("id", userEID);
+                    obj.put("userId", userEID);
                     obj.put("name", user.getName());
                     obj.put("amount", Float.toString(user.getAmount()));
                     obj.put("mycode", user.getMyRefCode());
