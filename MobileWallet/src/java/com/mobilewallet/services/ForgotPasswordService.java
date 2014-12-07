@@ -5,6 +5,7 @@
  */
 package com.mobilewallet.services;
 
+import com.mobilewallet.threads.ForgotPasswordEmailThread;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -31,9 +32,9 @@ public class ForgotPasswordService {
         log.info("Forgot Password Email : " + email);
 
         try {
-            /*SendForgotPasswordThread sv = new SendForgotPasswordThread(email.toLowerCase());
+            ForgotPasswordEmailThread sv = new ForgotPasswordEmailThread(email.toLowerCase(), request.getRemoteAddr());
             Thread t = new Thread(sv);
-            t.start();*/
+            t.start();
 
         } catch (Exception ex) {
             ex.printStackTrace();

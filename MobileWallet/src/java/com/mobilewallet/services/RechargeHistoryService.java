@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author Gopi
  */
-@Path("drechargeHistory")
+@Path("rechargeHistory")
 public class RechargeHistoryService {
 
     private final Log log = LogFactory.getLog(RechargeHistoryService.class);
