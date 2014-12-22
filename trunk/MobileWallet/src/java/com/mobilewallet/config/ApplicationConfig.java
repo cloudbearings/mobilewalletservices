@@ -39,8 +39,10 @@ public class ApplicationConfig extends Application {
         resources.add(com.mobilewallet.services.NotificatonsService.class);
         resources.add(com.mobilewallet.services.RechargeHistoryService.class);
         resources.add(com.mobilewallet.services.RegisterService.class);
+        resources.add(com.mobilewallet.services.SubmitQuestionService.class);
         resources.add(com.mobilewallet.services.UpdateGCMResource.class);
         resources.add(com.mobilewallet.services.UserProfileService.class);
+        resources.add(com.mobilewallet.services.UserQuestionsService.class);
         resources.add(com.mobilewallet.services.WalletHistoryService.class);
     } 
 }
