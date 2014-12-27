@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+    
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+    </global-forwards>
+
+    <action-mappings>
+        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+        <action path="/admin" type="com.mobilewallet.admin.action.AdminAction">
+            <forward name="shAdmin" path="/jsp/common/admin.jsp"/>
+            <forward name="homePagePics" path="/jsp/common/homePagePics.jsp"/>
+            <forward name="addPhoto" path="/jsp/addPhoto.jsp"/>
+        </action>
+        <action path="/login" type="com.mobilewallet.admin.action.DisplayLoginAction">
+            <forward name="dsLogin" path="/jsp/common/loginPage.jsp"/>
+            <forward name="homePage" path="/jsp/common/adminHome.jsp"/>
+        </action>
+        <action path="/loginPage" type="com.mobilewallet.admin.action.AdminLoginAction">
+            <forward name="dsAdminHome" path="/jsp/common/adminHome.jsp"/>
+            <forward name="failure" path="/jsp/common/dsLogin.jsp"/>
+        </action>
+        <action path="/submitQuestion" type="com.mobilewallet.admin.action.SubmitQuestionAction">
+            <forward name="success" path="/jsp/submitQuestionResponse.jsp"/>
+        </action>
+        <action path="/logout" type="com.mobilewallet.admin.action.LogoutAction">
+            <forward name="shLogout" path="/jsp/common/logout.jsp"/>
+        </action>
+
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter=""/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>
