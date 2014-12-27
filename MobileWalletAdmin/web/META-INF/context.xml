@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/admin">
+    <Resource
+        accessToUnderlyingConnectionAllowed="true"
+        auth="Container"
+        driverClassName="oracle.jdbc.OracleDriver"
+        maxActive="10"
+        maxIdle="1"
+        maxWait="-1"
+        validationQuery="SELECT 1 from dual"
+        testOnBorrow="true"
+        removeAbandoned="true"
+        removeAbandonedTimeout="30"
+        logAbandoned="true"
+        name="jdbc/ds"
+        password="mobilewallet"
+        type="javax.sql.DataSource"
+        url="jdbc:oracle:thin:@localhost:1521:mobilewallet"
+        username="mobilewallet"/>
+
+    <Resource auth="Container" name="mail/Session" type="javax.mail.Session"/>
+    <ResourceParams name="mail/Session">
+        <parameter>
+            <name>mail.smtp.host</name>
+            <value>localhost</value>
+        </parameter>
+    </ResourceParams>
+</Context>
