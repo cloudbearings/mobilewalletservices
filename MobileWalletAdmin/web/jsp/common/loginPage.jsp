@@ -42,5 +42,6 @@
 <!--CONTENT ENDS HERE --> 
 
 </div>
+<%@include file="/jsp/common/mobileWalletFooter.jsp" %>
 </body>
 </html>

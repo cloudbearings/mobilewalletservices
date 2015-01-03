@@ -35,11 +35,11 @@
                 <ul>
                     <li><a href="admin.do?page=subitQuestion" id="HomePagePics">Submit Question</a>
                         <ul>
-                            <li><a href="admin.do?page=viewQuestions" >Questions</a></li>
+                            <li><a style="cursor : pointer;" onclick="return ajaxCall();">Questions</a></li>
                             <li><a href="chat-history.html">Chat History</a></li>
                         </ul>
                     </li>
-                    <li><a href="admin.do?page=profileUpdatedUsers" id="ImageUpdatedUsers">Questions</a></li>
+                    <li><a href="/admin/questionsList.do?b=1">Questions</a></li>
                     <li><a href="admin.do?page=verifyData" id="VerifyData">Verify Data</a></li>
                 </ul>
                 <br style="clear: left" />
