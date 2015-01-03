@@ -100,7 +100,7 @@ function showRequest(formData) {
     $('#optionbRequired').hide();
     $('#optioncRequired').hide();
     $('#optiondRequired').hide();
-    $('#answerRequired').show();
+    $('#answerRequired').hide();
     $('#explanationRequired').hide();
 
     var typequery = $('#typequery').val();
