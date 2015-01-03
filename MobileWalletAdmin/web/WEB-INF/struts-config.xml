@@ -21,9 +21,8 @@
     <action-mappings>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
         <action path="/admin" type="com.mobilewallet.admin.action.AdminAction">
-            <forward name="shAdmin" path="/jsp/common/admin.jsp"/>
-            <forward name="homePagePics" path="/jsp/common/homePagePics.jsp"/>
-            <forward name="addPhoto" path="/jsp/addPhoto.jsp"/>
+            <forward name="dsLogin" path="/jsp/common/loginPage.jsp"/>
+            <forward name="shAdminHome" path="/jsp/common/adminHome.jsp"/>
         </action>
         <action path="/login" type="com.mobilewallet.admin.action.DisplayLoginAction">
             <forward name="dsLogin" path="/jsp/common/loginPage.jsp"/>
@@ -31,13 +30,16 @@
         </action>
         <action path="/loginPage" type="com.mobilewallet.admin.action.AdminLoginAction">
             <forward name="dsAdminHome" path="/jsp/common/adminHome.jsp"/>
-            <forward name="failure" path="/jsp/common/dsLogin.jsp"/>
+            <forward name="failure" path="/jsp/common/loginPage.jsp"/>
         </action>
         <action path="/submitQuestion" type="com.mobilewallet.admin.action.SubmitQuestionAction">
-            <forward name="success" path="/jsp/submitQuestionResponse.jsp"/>
+            <forward name="success" path="/jsp/common/adminHome.jsp"/>
         </action>
         <action path="/logout" type="com.mobilewallet.admin.action.LogoutAction">
             <forward name="shLogout" path="/jsp/common/logout.jsp"/>
+        </action>
+        <action path="/questionsList" type="com.mobilewallet.admin.action.QuestionsListAction">
+            <forward name="showQuestionsList" path="/jsp/questionsListAjax.jsp"/>
         </action>
 
     </action-mappings>
