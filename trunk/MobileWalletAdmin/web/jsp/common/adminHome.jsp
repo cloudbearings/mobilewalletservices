@@ -13,6 +13,23 @@
         <%@include file="/jsp/common/jsAndCss.jsp" %>
         <script type="text/javascript" src="js/jquery.form.js"></script>
         <script type="text/javascript" src="js/validateContactUs.js"></script>
+
+        <script type="text/javascript">
+            function ajaxCall() {
+                alert("dfnjsdn");
+                var url = "/questionsList?b=1";
+                $.ajax({
+                type: 'POST',
+                        url: url,
+                        beforeSend: function () {
+                            // write form client side validations.
+                            }
+                    success: function(data) {
+                    alert(data);
+                    }
+                });
+            }
+        </script>
     </head>
 
     <body class="registration">
@@ -44,11 +61,8 @@
             <!-- STATIC PAGE CONTAINER STARTS HERE -->
             <div class="static-container" style="width:500px;">
                 <div style="width:500px; float:left;">
-                    <form action="/submitQuestion" method="post" id="submitQuestionForm">
+                    <form action="/admin/submitQuestion.do" method="post">
                         <h3>Submit Question</h3>
-                        <div id="successMsg" class="messages success" style="padding-top:5px; margin-bottom:5px; font-weight:bold; text-align:center; display: none;">
-                            <p id="messageText">Your question has been submitted successfully.</p>
-                        </div>
                         <core:if test="${status ne null}">
                             <div id="successMsg" class="messages success" style="padding-top:5px; margin-bottom:5px; font-weight:bold; text-align:center;">
                                 <p id="messageText"><core:out escapeXml="true" value="${status}"/></p>
@@ -138,10 +152,10 @@
                                 <td align="left" valign="top">
                                     <core:choose>
                                         <core:when test="${idostiUser ne null}">
-                                            <input name="optionb" type="text" class="textfield" id="optionb" value="${idostiUser.optionbNumber}" maxlength="10"/>
+                                            <input name="optionb" type="text" class="textfield" id="optionb" value="${idostiUser.optionbNumber}" />
                                         </core:when>
                                         <core:otherwise>
-                                            <input name="optionb" type="text" class="textfield" id="optionb" maxlength="10"/>
+                                            <input name="optionb" type="text" class="textfield" id="optionb" />
                                         </core:otherwise>
                                     </core:choose>
 
