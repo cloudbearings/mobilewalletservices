@@ -7,6 +7,7 @@ package com.mobilewallet.admin.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
@@ -19,8 +20,10 @@ import org.apache.struts.action.ActionMapping;
  */
 public class AdminAction extends org.apache.struts.action.Action {
 
-    /* forward name="shAdmin" path="/jsp/common/admin.jsp" */
-    private static final String SHOW_ADMIN = "shAdmin";
+    /* forward name="dsLogin" path="/jsp/common/loginPage.jsp" */
+    private static final String DISPLAY_LOGINPAGE = "dsLogin";
+    /* forward name="shAdminHome" path="/jsp/common/adminHome.jsp" */
+    private static final String SHOW_ADMIN_HOME = "shAdminHome";
     private Log log = LogFactory.getLog(AdminAction.class);
 
     /**
@@ -37,7 +40,10 @@ public class AdminAction extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        log.info("I am in Admin action");
-        return mapping.findForward(SHOW_ADMIN);
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("adminUser") == null) {
+            return mapping.findForward(SHOW_ADMIN_HOME);
+        }
+        return mapping.findForward(DISPLAY_LOGINPAGE);
     }
 }
