@@ -137,7 +137,7 @@ public class UserDAO {
         int updated = 0;
         try {
             connection = dataSource.getConnection();
-            pstmt = connection.prepareCall("{call wp_update_profile(?,?,?,?,?,?,?,?)}");
+            pstmt = connection.prepareCall("{call UPDATE_PROFILE(?,?,?,?,?,?,?,?)}");
             pstmt.setLong(1, userId);
             pstmt.setString(2, mCode);
             pstmt.setString(3, mobileNumber);
