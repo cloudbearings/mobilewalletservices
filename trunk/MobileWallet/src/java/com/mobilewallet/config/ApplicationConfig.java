@@ -35,7 +35,9 @@ public class ApplicationConfig extends Application {
         resources.add(com.mobilewallet.services.DailyRewardsService.class);
         resources.add(com.mobilewallet.services.FeedbackService.class);
         resources.add(com.mobilewallet.services.ForgotPasswordService.class);
+        resources.add(com.mobilewallet.services.GetNotificationsResource.class);
         resources.add(com.mobilewallet.services.LoginService.class);
+        resources.add(com.mobilewallet.services.NotificationsService.class);
         resources.add(com.mobilewallet.services.NotificatonsService.class);
         resources.add(com.mobilewallet.services.RechargeHistoryService.class);
         resources.add(com.mobilewallet.services.RegisterService.class);
