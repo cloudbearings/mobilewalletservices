@@ -8,7 +8,7 @@ package com.mobilewallet.services;
 import com.mobilewallet.common.beans.LoginBean;
 import com.mobilewallet.common.bo.LoginBO;
 import com.mobilewallet.config.Config;
-import com.mobilewallet.users.bo.UserBO;
+import com.mobilewallet.users.bo.PushNotificationsBO;
 import com.mobilewallet.users.dto.User;
 import com.mobilewallet.util.MobileWalletID;
 import javax.ws.rs.GET;
@@ -16,28 +16,18 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.json.JSONObject;
 
 /**
  *
  * @author gopi
  */
-@Path("updateProfile")
-public class UpdateUserProfileService {
-
-    private final Log log = LogFactory.getLog(UpdateUserProfileService.class);
+@Path("updateNotifications")
+public class NotificationsService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Object updateProfile(
-            @QueryParam("id") String eid,
-            @QueryParam("mCode") String mCode,
-            @QueryParam("mobileNumber") String mobileNumber,
-            @QueryParam("dob") String dob,
-            @QueryParam("gender") String gender,
-            @QueryParam("occupation") String occupation,
-            @QueryParam("income") String income) {
+    public Object pushNotification(@QueryParam("id") String eid, @QueryParam("status") String status, @QueryParam("type") String type) {
 
         String decryptedUserId = MobileWalletID.getDecryptedUserId(eid);
         String userId = null;
@@ -49,15 +39,25 @@ public class UpdateUserProfileService {
 
             }
         }
-        log.info("UserId : " + userId);
-        if (userId != null) {
-            User user = LoginBO.login(userId);
 
-            if (user != null) {
-                return UserBO.updateProfile(user.getUserId(), mCode, mobileNumber, dob, gender, occupation, income);
+        if (userId != null) {
+
+            User user = LoginBO.login(userId);
+            try {
+                JSONObject obj = new JSONObject();
+                if (user != null) {
+                    int updated = PushNotificationsBO.updateNotification(user.getUserId(), status, type);
+                    obj.put("sc", "Y");
+                    return obj.toString();
+                } else {
+                    return new LoginBean();
+                }
+            } catch (Exception ex) {
+
             }
         }
 
         return new LoginBean();
+
     }
 }
