@@ -28,7 +28,7 @@ public class DailyRewardsDAO {
         int rvalue = -1;
         try {
             con = ds.getConnection();
-            cstmt = con.prepareCall("{call wp_daily_reward(?,?,?,?)}");
+            cstmt = con.prepareCall("{call DAILY_REWARDS(?,?,?,?)}");
             cstmt.setLong(1, userId);
             cstmt.setString(2, ip);
             cstmt.setString(3, imei);

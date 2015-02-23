@@ -37,7 +37,7 @@ public class ReferralIncentiveDAO {
         Object[] obj = null;
         try {
             connection = dataSource.getConnection();
-            cstmt = connection.prepareCall("{call wp_add_referral_credit(?,?,?,?,?,?,?)}");
+            cstmt = connection.prepareCall("{call ADD_REFERRAL_CREDIT(?,?,?,?,?,?,?)}");
             cstmt.setLong(1, userId);
             cstmt.setString(2, refCode);
             cstmt.setString(3, imei);
