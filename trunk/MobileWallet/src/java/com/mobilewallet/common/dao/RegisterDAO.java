@@ -31,7 +31,7 @@ public class RegisterDAO {
         CallableStatement cstmt = null;
         try {
             con = ds.getConnection();
-            cstmt = con.prepareCall("{call wp_register_user(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            cstmt = con.prepareCall("{call REGISTER_USER(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             cstmt.setString(1, email);
             cstmt.setString(2, fname);
             cstmt.setString(3, lname);

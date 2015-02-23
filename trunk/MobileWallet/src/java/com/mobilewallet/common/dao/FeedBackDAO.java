@@ -32,7 +32,7 @@ public class FeedBackDAO {
 
         try {
             connection = dataSource.getConnection();
-            cstmt = connection.prepareCall("{call wp_feedBack_proc(?,?,?,?,?)}");
+            cstmt = connection.prepareCall("{call FEEDBACK_PROC(?,?,?,?,?)}");
             cstmt.setLong(1, userId);
             cstmt.setString(2, feedType);
             cstmt.setString(3, feedText);
