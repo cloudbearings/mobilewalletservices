@@ -32,7 +32,7 @@ public class SendMail {
             Context envCtx = (Context) initCtx.lookup("java:comp/env");
             log.info(envCtx.lookup("mail/Session"));
             session = (Session) envCtx.lookup("mail/Session");
-            log.info("java mail session object created :: vijay");
+            log.info("java mail session object created :: gopi");
 
         } catch (Exception e) {
             e.printStackTrace();
